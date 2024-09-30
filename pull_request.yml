@@ -1,0 +1,17 @@
+name: PR Check
+
+on:
+  pull_request:
+    branches:
+      - development
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check for approvals
+        uses: pullapprove/pullapprove-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          minimum_approvals: 2
